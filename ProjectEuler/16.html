@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+var result = 0;
+var m = 999;
+var d = [2];
+var resto = 0;
+
+for(var x = 0; x < m; x++) {
+  for(var i = 0; i < d.length; i++) {
+    var n = d[i];
+    var res = n * 2 + '';
+    res = res.split('');
+    if(res.length > 1) {
+      d[i] = +res[1] + resto;
+      resto = +res[0];
+    }
+    else {
+      d[i] = +res[0] + resto;
+      resto = 0;
+    }
+  }
+  if(resto != 0) d.push(resto);
+  resto = 0;
+}
+
+var sum = 0;
+for(var x = 0; x < d.length; x++){
+  sum += d[x];
+}
+
+document.write(sum);
+</script>
+</body>
+</html>

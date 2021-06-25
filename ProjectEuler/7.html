@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+var result = 0;
+
+var primes = [2, 3];
+var n = 4;
+var cap = 10001;
+
+do {
+  var nope = false;
+  for(var x = 0; x < primes.length; x++){
+    if(n % primes[x] == 0){
+      nope = true;
+      break;
+    }
+  }
+  if(!nope) primes.push(n);
+  n++;
+} while(primes.length < cap);
+
+document.write(primes[primes.length - 1]);
+</script>
+</body>
+</html>

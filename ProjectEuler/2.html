@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+var result = 0;
+
+var cap = 4000000;
+var sum = 2;
+var far = 1;
+var near = 2;
+var fib = 0;
+do {
+  fib = near + far;
+  if(fib % 2 == 0) sum += fib;
+  console.log('far:' + far + ', near: ' + near);
+  console.log('fib: ' + fib);
+  console.log('sum: ' + sum);
+  far = near;
+  near = fib;
+} while (fib < cap);
+result = sum;
+document.write(result);
+</script>
+</body>
+</html>

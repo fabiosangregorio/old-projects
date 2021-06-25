@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+function len(i) {
+  return nums[i].length;
+}
+
+var result = 0;
+var start = 1;
+var end = 1000;
+
+var nums = {
+  1: 'one',
+  2: 'two',
+  3: 'three',
+  4: 'four',
+  5: 'five',
+  6: 'six',
+  7: 'seven',
+  8: 'eight',
+  9: 'nine',
+  10: 'ten',
+  11: 'eleven',
+  12: 'twelve',
+  13: 'thirteen',
+  14: 'fourteen',
+  15: 'fifteen',
+  16: 'sixteen',
+  17: 'seventeen',
+  18: 'eighteen',
+  19: 'nineteen',
+  20: 'twenty',
+  30: 'thirty',
+  40: 'forty',
+  50: 'fifty',
+  60: 'sixty',
+  70: 'seventy',
+  80: 'eigthy',
+  90: 'ninety',
+  100: 'hundred',
+  1000: 'thousand',
+  'and': 'and'
+}
+
+for(var i = start; i <= end; i++) {
+  var n = i.toString();
+  var log = "";
+
+  for(var j = 0; j < n.length; j++) { // ciclo sulle cifre
+    var digit = n[j];
+    var pos = n.length - j; // unita', decine, centinaia, migliaia
+    if(digit == "0") continue;
+    if(pos > 2) { // se la cifra e' minore delle decine (centinaia, migliaia)
+      result += len(digit) + len(Math.pow(10, pos - 1));
+      log += nums[digit] + " " + nums[Math.pow(10, pos - 1)]  + " ";
+      if(pos == 3 && (n[j + 1] != 0 || n[j + 2] != 0)) {
+        result += len('and');
+        log += nums['and'] + " ";
+      }
+    }
+    if (pos == 2) {
+      digit = n[j] * 10 + Number(n[j+1]);
+      if(digit > 19) {
+        result += len(n[j] * 10);
+        log += nums[n[j] * 10] + " ";
+      } else {
+        result += len(digit);
+        log += nums[digit] + " ";
+        break;
+      }
+    } else if(pos == 1) {
+      digit = Number(n[j]);
+      result += len(digit);
+      log += nums[digit] + " ";
+    }
+  }
+  console.log(log);
+}
+
+document.write(result);
+</script>
+</body>
+</html>

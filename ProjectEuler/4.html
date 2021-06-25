@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+var result = 0;
+
+function getArray(n) {
+  return ("" + n).split("");
+}
+
+var palArray = [];
+var firstN = 999;
+var secondN = 999;
+var found = false;
+var origFirstN = firstN;
+do {
+  firstN--;
+  var m = firstN * secondN;
+  if(getArray(m).length % 2 != 0 || m < 900000) {
+    firstN = origFirstN;
+    secondN--;
+    m = firstN * secondN;
+  }
+  console.log('firstN: ' + firstN + ' secondN: ' + secondN);
+  var pal = getArray(m);
+  if(!(pal.length % 2 == 0)) break;
+  var nope = false;
+  for(var i = pal.length - 1; i >= pal.length / 2; i-- ) {
+    var left = pal[pal.length - 1 - i];
+    var right = pal[i];
+    if(left != right) {
+      nope = true;
+      break;
+    }
+  }
+  if(nope) continue;
+  palArray.push(m);
+} while(true);
+
+document.write(palArray);
+</script>
+</body>
+</html>

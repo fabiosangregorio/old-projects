@@ -1,0 +1,77 @@
+@import "variables"
+
+body
+  margin: 0
+  background: $body-color
+  height: 100vh
+div
+  box-sizing: border-box
+
+.wrapper
+  display: flex
+  height: 100vh
+  align-items: center
+  justify-content: center
+
+.card
+  background: $card-bg-color
+  padding: 30px
+  border-radius: 5px
+
+.filling-border-text-container
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+  padding: 20px 50px
+  min-height: 5px
+
+  .filling-border-text
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    border-top: 0
+    animation: fill-borders $animation-settings
+    &::before, &::after
+      content: ''
+      display: block
+      position: absolute
+      top: 0
+      border-bottom: $border
+      animation: fill-top $animation-settings
+    &::before
+      left: 0
+    &::after
+      right: 0
+
+  .inner-text
+    color: $title-color
+    text-transform: uppercase
+    text-align: center
+    font: $title-text
+
+@keyframes fill-borders
+  0%
+    left: 50%
+    right: 50%
+    bottom: 0
+    top: calc(100% - 5px)
+    border: $border
+    border-top: 0
+  44%
+    left: 0
+    right: 0
+    top: calc(100% - 5px)
+  66%
+    top: 0
+  100%
+    border: $border
+    border-top: 0
+
+@keyframes fill-top
+  0%, 66%
+    width: 0
+  100%
+    width: 50%

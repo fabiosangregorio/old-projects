@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+function isLeapYear(year) {
+  return year % 400 == 0 && year % 4 == 0;
+}
+
+function calculateOffset(oldOffset, days, weeks) {
+  var offset = oldOffset + days - (weeks * 7);
+  var whole = Math.floor(offset / 7);
+  return offset - whole * 7;
+}
+
+var startyear = 1901;
+var endyear   = 2000;
+
+var sundays = 0;
+var months  = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+var offset  = 3;
+
+for(var year = startyear; year <= endyear; year++) {
+  isLeapYear(year)? months[1] = 29 : months[1] = 28;
+  for(var j = 0; j < months.length; j++) {
+    if(offset == 0) sundays++;
+    var days = months[j];
+    var weeks = Math.floor((days - offset) / 7);
+    offset = calculateOffset(offset, days, weeks);
+  }
+}
+
+document.write(sundays);
+</script>
+</body>
+</html>

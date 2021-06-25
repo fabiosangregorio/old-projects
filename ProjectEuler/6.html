@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+var result = 0;
+var cap = 100;
+
+var sum = 0;      // Sum
+var sum2 = 0;     // Sum of the squares
+var square = 0;   // Square of the sums
+
+for(var x = 1; x <= cap; x++){
+  sum2 += Math.pow(x, 2);
+  sum += x;
+}
+
+square = Math.pow(sum, 2);
+result = square - sum2;
+
+document.write(result);
+</script>
+</body>
+</html>
